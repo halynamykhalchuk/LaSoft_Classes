@@ -90,30 +90,28 @@ class Company {
 }
 
 let arrSt = [
-    new Student("Halyna", "Mykhalchuk", "Ivan Franko National University of Lviv", 4.2),
+    new Student("Halyna", "Mykhalchuk", "Ivan Franko National University of Lviv", 4.4),
     new Student("Pavlo", "Pomirko", "Ivan Franko National University of Lviv", 3.7),
     new Student("Mariia", "Lys", "Ivan Franko National University of Lviv", 5.0),
     new Student("Mariia", "Baran", "Ivan Franko National University of Lviv", 4.5),
     new Student("Ihor", "Chornyi", "Ivan Franko National University of Lviv", 3.3),
     new Student("Liubomyr", "Opanovych", "Lviv Polytechnic", 4.2),
     new Student("Nazarii", "Maidan", "Ivan Franko National University of Lviv", 4.2),
-    new Student("Kseniia", "Zadvorna", "Ivan Franko National University of Lviv", 4.2),
+    new Student("Kseniia", "Zadvorna", "Ivan Franko National University of Lviv", 4.3),
     new Student("Anna", "Liednikova", "Taras Shevchenko National University of Kyiv", 4.8),
     new Student("Ivan", "Mykhalchuk", "National Aerospace University – Kharkiv Aviation Institute", 5.0),
     new Student("Anastasiia", "Shestak", "Lviv Polytechnic", 3.2),
     new Student("Vladyslav", "Naminas", "Taras Shevchenko National University of Kyiv", 4.9),
     new Student("Dmytro", "Teplos", "Taras Shevchenko National University of Kyiv", 4.5),
-    new Student("Alexandra", "Snitsar", "Ukrainian Academy of Printing", 4.5),
+    new Student("Alexandra", "Snitsar", "Ukrainian Academy of Printing", 4.7),
     new Student("Angelina", "Gladysh", "Ukrainian Academy of Printing", 4.0),
-    new Student("Iryna", "Mutko", "Ukrainian Academy of Printing", 4.2),
     new Student("Halyna", "Kozak", "Ukrainian Academy of Printing", 3.5),
-    new Student("Hope", "Kulyk", "Ivan Franko National University of Lviv", 4.2),
+    new Student("Hope", "Kulyk", "Ivan Franko National University of Lviv", 4.1),
     new Student("Maryna", "Simakova", "Ivan Franko National University of Lviv", 4.5),
     new Student("Alexadr", "Denisenko", "National Aerospace University – Kharkiv Aviation Institute", 4.2),
-    new Student("Andrii", "Pankiv", "Ivan Franko National University of Lviv", 3.2),
     new Student("Myroslava", "Maziar", "Ivan Franko National University of Lviv", 4.6)
 ];
-
+arrSt.sort((prev, next) => next.rate - prev.rate);
 let getEl = (a) => document.querySelector(a);
 getEl('.stdBut').addEventListener('click', function () {
     getEl('.stdList').innerHTML = `<table class="table stdList">
@@ -126,18 +124,68 @@ getEl('.stdBut').addEventListener('click', function () {
         <th scope="col">Rate</th>
       </tr>
     </thead>
-    <tbody>`
-for (let i = 0; i < arrSt.length; i++) {
-    
-        
-        getEl('tbody').innerHTML += `
+    <tbody class="stTable">`
+    for (let i = 0; i < arrSt.length; i++) {
+
+
+        getEl('.stTable').innerHTML += `
       <tr>
         <th scope="row">${i+1}</th>
         <td>${arrSt[i].name}</td>
         <td>${arrSt[i].sname}</td>
         <td>${arrSt[i].university}</td>
         <td>${arrSt[i].rate}</td>
-      </tr>`}
-      getEl('.stdBut').disabled = true;
-      })
-      
+      </tr>`
+    }
+    getEl('.stdBut').disabled = true;
+})
+
+let arrComp = [
+    new Company("Boing", "Aero-space engineering",[]),
+    new Company("Hilton Hotels", "Tourism",[])
+]
+
+getEl('.compBut').addEventListener('click', function () {
+    
+    getEl('.comp_1').innerHTML = `
+    <p class="text-monospace mt-5">
+    Company: ${arrComp[0].name} <br>
+    Practice: ${arrComp[0].practice}
+    </p><br>
+    
+    <span><p class="font-weight-bold text-center">Employees</p>
+    <button type="button" class="btn btn-warning mb-3 hire_1">Hire an employee</button></span>
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Profession</th>
+        <th scope="col">Salary</th>
+      </tr>
+    </thead>
+    <tbody>`
+
+    getEl('.comp_2').innerHTML = `
+    <p class="text-monospace mt-5">
+    Company: ${arrComp[1].name} <br>
+    Practice: ${arrComp[1].practice}
+    </p><br>
+    
+    <span><p class="font-weight-bold text-center">Employees</p>
+    <button type="button" class="btn btn-warning mb-3 hire_2">Hire an employee</button></span>
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Profession</th>
+        <th scope="col">Salary</th>
+      </tr>
+    </thead>
+    <tbody>`
+    hire(arrSt[0])
+    
+})
