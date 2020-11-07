@@ -137,7 +137,7 @@ getEl('.stdBut').addEventListener('click', function () {
         <td>${arrSt[i].rate}</td>
       </tr>`
     }
-    getEl('.stdBut').disabled = true;
+    
 })
 
 let arrComp = [
@@ -198,6 +198,7 @@ getEl('.hire_1').addEventListener('click', function () {
         <td><button type="button" class="btn btn-danger mb-3">Fire</button></td>
       </tr>
     `
+    getEl('.stdBut').innerText = "Refresh student's list"
 })
 
 getEl('.hire_2').addEventListener('click', function () {
@@ -214,4 +215,6 @@ getEl('.hire_2').addEventListener('click', function () {
         <td><button type="button" class="btn btn-danger mb-3">Fire</button></td>
       </tr>
     `
+    getEl('.stdBut').innerText = "Refresh student's list"
+
 })
