@@ -141,51 +141,77 @@ getEl('.stdBut').addEventListener('click', function () {
 })
 
 let arrComp = [
-    new Company("Boing", "Aero-space engineering",[]),
-    new Company("Hilton Hotels", "Tourism",[])
+    new Company("Boing", "Aero-space engineering", []),
+    new Company("Hilton Hotels", "Tourism", [])
 ]
 
 getEl('.compBut').addEventListener('click', function () {
-    
-    getEl('.comp_1').innerHTML = `
+
+    getEl('.headEmpls_1').style.display = "block"
+    getEl('.tableEmpls_1').innerHTML = `
     <p class="text-monospace mt-5">
     Company: ${arrComp[0].name} <br>
     Practice: ${arrComp[0].practice}
     </p><br>
-    
-    <span><p class="font-weight-bold text-center">Employees</p>
-    <button type="button" class="btn btn-warning mb-3 hire_1">Hire an employee</button></span>
     <table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Surname</th>
         <th scope="col">Profession</th>
-        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>`
+    <tbody class="tbodyEmpls_1">`
 
-    getEl('.comp_2').innerHTML = `
+    getEl('.headEmpls_2').style.display = "block"
+    getEl('.tableEmpls_2').innerHTML = `
     <p class="text-monospace mt-5">
-    Company: ${arrComp[1].name} <br>
-    Practice: ${arrComp[1].practice}
+         Company: ${arrComp[1].name} <br>
+         Practice: ${arrComp[1].practice}
     </p><br>
-    
-    <span><p class="font-weight-bold text-center">Employees</p>
-    <button type="button" class="btn btn-warning mb-3 hire_2">Hire an employee</button></span>
     <table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Surname</th>
         <th scope="col">Profession</th>
-        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>`
-    hire(arrSt[0])
+    <tbody class="tbodyEmpls_2">`
+
+})
+
+
+getEl('.hire_1').addEventListener('click', function () {
+
+    let candidate = arrSt.shift()
+    let proff = prompt('Enter profession for candidate')
+    arrComp[0].hire(candidate, proff)
     
+    getEl('.tbodyEmpls_1').innerHTML += `
+    <tr>
+        <td>${candidate.name}</td>
+        <td>${candidate.sname}</td>
+        <td>${proff}</td>
+        <td><button type="button" class="btn btn-danger mb-3">Fire</button></td>
+      </tr>
+    `
+})
+
+getEl('.hire_2').addEventListener('click', function () {
+
+    let candidate = arrSt.shift()
+    let proff = prompt('Enter profession for candidate')
+    arrComp[1].hire(candidate, proff)
+    
+    getEl('.tbodyEmpls_2').innerHTML += `
+    <tr>
+        <td>${candidate.name}</td>
+        <td>${candidate.sname}</td>
+        <td>${proff}</td>
+        <td><button type="button" class="btn btn-danger mb-3">Fire</button></td>
+      </tr>
+    `
 })
