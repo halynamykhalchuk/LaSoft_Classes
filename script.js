@@ -76,40 +76,143 @@ class Company {
         this.empQuant = this.employees.length;
         this.setSalaryForWorker(employee);
     }
-    fire(employee, endDate) {
+    fire(employee) {
+
         employee.workStatus = "unemployed";
         employee.salary = 0;
-        employee.updateHistory([this.name, endDate, employee.start]);
-        delete employee.start;
+        this.employees.splice(this.employees.indexOf(employee), 1)
+        this.empQuant = this.employees.length;
+        arrSt.push(employee);
+        arrSt.sort((prev, next) => next.rate - prev.rate);
+
     }
     close() {
-        this.workers.forEach(employee => {
+        this.employees.forEach(employee => {
             this.fire(employee);
         })
     }
 }
 
-let arrSt = [
-    new Student("Halyna", "Mykhalchuk", "Ivan Franko National University of Lviv", 4.4),
-    new Student("Pavlo", "Pomirko", "Ivan Franko National University of Lviv", 3.7),
-    new Student("Mariia", "Lys", "Ivan Franko National University of Lviv", 5.0),
-    new Student("Mariia", "Baran", "Ivan Franko National University of Lviv", 4.5),
-    new Student("Ihor", "Chornyi", "Ivan Franko National University of Lviv", 3.3),
-    new Student("Liubomyr", "Opanovych", "Lviv Polytechnic", 4.2),
-    new Student("Nazarii", "Maidan", "Ivan Franko National University of Lviv", 4.2),
-    new Student("Kseniia", "Zadvorna", "Ivan Franko National University of Lviv", 4.3),
-    new Student("Anna", "Liednikova", "Taras Shevchenko National University of Kyiv", 4.8),
-    new Student("Ivan", "Mykhalchuk", "National Aerospace University – Kharkiv Aviation Institute", 5.0),
-    new Student("Anastasiia", "Shestak", "Lviv Polytechnic", 3.2),
-    new Student("Vladyslav", "Naminas", "Taras Shevchenko National University of Kyiv", 4.9),
-    new Student("Dmytro", "Teplos", "Taras Shevchenko National University of Kyiv", 4.5),
-    new Student("Alexandra", "Snitsar", "Ukrainian Academy of Printing", 4.7),
-    new Student("Angelina", "Gladysh", "Ukrainian Academy of Printing", 4.0),
-    new Student("Halyna", "Kozak", "Ukrainian Academy of Printing", 3.5),
-    new Student("Hope", "Kulyk", "Ivan Franko National University of Lviv", 4.1),
-    new Student("Maryna", "Simakova", "Ivan Franko National University of Lviv", 4.5),
-    new Student("Alexadr", "Denisenko", "National Aerospace University – Kharkiv Aviation Institute", 4.2),
-    new Student("Myroslava", "Maziar", "Ivan Franko National University of Lviv", 4.6)
+let arrSt = [{
+        name: "Halyna",
+        sname: "Mykhalchuk",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.4
+    },
+    {
+        name: "Pavlo",
+        sname: "Pomirko",
+        university: "Ivan Franko National University of Lviv",
+        rate: 3.7
+    },
+    {
+        name: "Mariia",
+        sname: "Lys",
+        university: "Ivan Franko National University of Lviv",
+        rate: 5.0
+    },
+    {
+        name: "Mariia",
+        sname: "Baran",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.5
+    },
+    {
+        name: "Ihor",
+        sname: "Chornyi",
+        university: "Ivan Franko National University of Lviv",
+        rate: 3.3
+    },
+    {
+        name: "Liubomyr",
+        sname: "Opanovych",
+        university: "Lviv Polytechnic",
+        rate: 4.2
+    },
+    {
+        name: "Nazarii",
+        sname: "Maidan",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.2
+    },
+    {
+        name: "Kseniia",
+        sname: "Zadvorna",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.3
+    },
+    {
+        name: "Anna",
+        sname: "Liednikova",
+        university: "Taras Shevchenko National University of Kyiv",
+        rate: 4.8
+    },
+    {
+        name: "Ivan",
+        sname: "Mykhalchuk",
+        university: "National Aerospace University – Kharkiv Aviation Institute",
+        rate: 5.0
+    },
+    {
+        name: "Anastasiia",
+        sname: "Shestak",
+        university: "Lviv Polytechnic",
+        rate: 3.2
+    },
+    {
+        name: "Vladyslav",
+        sname: "Naminas",
+        university: "Taras Shevchenko National University of Kyiv",
+        rate: 4.9
+    },
+    {
+        name: "Dmytro",
+        sname: "Teplos",
+        university: "Taras Shevchenko National University of Kyiv",
+        rate: 4.5
+    },
+    {
+        name: "Alexandra",
+        sname: "Snitsar",
+        university: "Ukrainian Academy of Printing",
+        rate: 4.7
+    },
+    {
+        name: "Angelina",
+        sname: "Gladysh",
+        university: "Ukrainian Academy of Printing",
+        rate: 4.0
+    },
+    {
+        name: "Halyna",
+        sname: "Kozak",
+        university: "Ukrainian Academy of Printing",
+        rate: 3.5
+    },
+    {
+        name: "Hope",
+        sname: "Kulyk",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.1
+    },
+    {
+        name: "Maryna",
+        sname: "Simakova",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.5
+    },
+    {
+        name: "Alexadr",
+        sname: "Denisenko",
+        university: "National Aerospace University – Kharkiv Aviation Institute",
+        rate: 4.2
+    },
+    {
+        name: "Myroslava",
+        sname: "Maziar",
+        university: "Ivan Franko National University of Lviv",
+        rate: 4.6
+    }
 ];
 arrSt.sort((prev, next) => next.rate - prev.rate);
 let getEl = (a) => document.querySelector(a);
@@ -137,7 +240,7 @@ getEl('.stdBut').addEventListener('click', function () {
         <td>${arrSt[i].rate}</td>
       </tr>`
     }
-    getEl('.stdBut').disabled = true;
+
 })
 
 let arrComp = [
@@ -147,71 +250,133 @@ let arrComp = [
 
 getEl('.compBut').addEventListener('click', function () {
 
-    getEl('.headEmpls_1').style.display = "block"
-    getEl('.tableEmpls_1').innerHTML = `
+    getEl('.btnsEmpls_1').style.display = "block"
+    getEl('.headEmpls_1').innerHTML = `
     <p class="text-monospace mt-5">
     Company: ${arrComp[0].name} <br>
     Practice: ${arrComp[0].practice}
     </p><br>
-    <table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">Profession</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody class="tbodyEmpls_1">`
+    `
+    getEl('.tableEmpls_1').style.display = "block"
 
-    getEl('.headEmpls_2').style.display = "block"
-    getEl('.tableEmpls_2').innerHTML = `
+
+    getEl('.btnsEmpls_2').style.display = "block"
+    getEl('.headEmpls_2').innerHTML = `
     <p class="text-monospace mt-5">
-         Company: ${arrComp[1].name} <br>
-         Practice: ${arrComp[1].practice}
+    Company: ${arrComp[1].name} <br>
+    Practice: ${arrComp[1].practice}
     </p><br>
-    <table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">Profession</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody class="tbodyEmpls_2">`
+    `
+    getEl('.tableEmpls_2').style.display = "block"
+
 
 })
+let i = 0
 
 
 getEl('.hire_1').addEventListener('click', function () {
 
-    let candidate = arrSt.shift()
     let proff = prompt('Enter profession for candidate')
-    arrComp[0].hire(candidate, proff)
-    
-    getEl('.tbodyEmpls_1').innerHTML += `
-    <tr>
-        <td>${candidate.name}</td>
-        <td>${candidate.sname}</td>
-        <td>${proff}</td>
-        <td><button type="button" class="btn btn-danger mb-3">Fire</button></td>
-      </tr>
-    `
+    if (proff == '' || proff == null) {
+        alert('Incorrect incoming. Check profession')
+    } else {
+        let candidate = arrSt.shift()
+        arrComp[0].hire(candidate, proff)
+        let tr = document.createElement('tr');
+        tr.dataset.idEmpl = candidate.sname
+        let tdName = document.createElement('td');
+        tdName.innerHTML = candidate.name;
+        tr.appendChild(tdName);
+        let tdSname = document.createElement('td');
+        tdSname.innerHTML = candidate.sname;
+        tr.appendChild(tdSname);
+        let tdProff = document.createElement('td');
+        tdProff.innerHTML = proff;
+        tr.appendChild(tdProff);
+        let tdAction = document.createElement('td');
+        let btnFire = document.createElement('button');
+        btnFire.innerText = 'Fire'
+        btnFire.setAttribute('type', 'button')
+        btnFire.setAttribute('class', 'btn')
+        btnFire.classList.add('btn-danger')
+        btnFire.classList.add(`fire_c1`)
+        tdAction.appendChild(btnFire)
+        tr.appendChild(tdAction)
+        getEl('.tbodyEmpls_1').appendChild(tr);
+
+
+        getEl('.stdBut').innerText = "Refresh student's list"
+    }
+    getEl('.fire_c1').addEventListener('click', function () {
+        surname = this.dataset.idEmpl;
+
+        for (let i = 0; i < arrComp[0].employees.length; i++) {
+            if (arrComp[0].employees[i]["sname"] === surname) {
+                arrComp[0].fire(arrComp[0].employees[i]);
+                getEl(`tr[data-id-empl="${this.dataset.idEmpl}"]`).remove();
+            }
+        }
+
+    });
 })
 
 getEl('.hire_2').addEventListener('click', function () {
 
-    let candidate = arrSt.shift()
     let proff = prompt('Enter profession for candidate')
-    arrComp[1].hire(candidate, proff)
-    
-    getEl('.tbodyEmpls_2').innerHTML += `
-    <tr>
-        <td>${candidate.name}</td>
-        <td>${candidate.sname}</td>
-        <td>${proff}</td>
-        <td><button type="button" class="btn btn-danger mb-3">Fire</button></td>
-      </tr>
-    `
+    if (proff == '' || proff == null) {
+        alert('Incorrect incoming. Check profession')
+    } else {
+        let candidate = arrSt.shift()
+        arrComp[1].hire(candidate, proff)
+        let tr = document.createElement('tr');
+        tr.dataset.idEmpl = candidate.sname
+        let tdName = document.createElement('td');
+        tdName.innerHTML = candidate.name;
+        tr.appendChild(tdName);
+        let tdSname = document.createElement('td');
+        tdSname.innerHTML = candidate.sname;
+        tr.appendChild(tdSname);
+        let tdProff = document.createElement('td');
+        tdProff.innerHTML = proff;
+        tr.appendChild(tdProff);
+        let tdAction = document.createElement('td');
+        let btnFire = document.createElement('button');
+        btnFire.innerText = 'Fire'
+        btnFire.setAttribute('type', 'button')
+        btnFire.setAttribute('class', 'btn')
+        btnFire.classList.add('btn-danger')
+        btnFire.classList.add(`fire_c2`)
+        tdAction.appendChild(btnFire)
+        tr.appendChild(tdAction)
+        getEl('.tbodyEmpls_2').appendChild(tr);
+
+
+        getEl('.stdBut').innerText = "Refresh student's list"
+    }
+    getEl('.fire_c2').addEventListener('click', function () {
+        surname = this.dataset.idEmpl;
+
+        for (let i = 0; i < arrComp[1].employees.length; i++) {
+            if (arrComp[1].employees[i]["sname"] === surname) {
+                arrComp[1].fire(arrComp[0].employees[i]);
+                getEl(`tr[data-id-empl="${this.dataset.idEmpl}"]`).remove();
+            }
+        }
+
+    });
+})
+getEl('.show_1').addEventListener('click', function () {
+    for (let i = 0; i < arrComp[0].employees.length; i++) {
+
+    }
+})
+
+
+
+getEl('close_1').addEventListener('click', function(){
+    arrComp[0].close()
+})
+
+getEl('close_2').addEventListener('click', function(){
+    arrComp[1].close()
 })

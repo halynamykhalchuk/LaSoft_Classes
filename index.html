@@ -13,23 +13,53 @@
     <div class="container">
         <form action="" name="f1">
 
-            <button type="button" class="btn btn-outline-success btn-block mt-3 mb-3 stdBut">Show Students</button>
+            <button type="button" class="btn btn-outline-success btn-block mt-3 mb-3 stdBut">Create Students</button>
             <div class="stdList"></div>
-            <button type="button" class="btn btn-outline-primary btn-block mb-3 compBut">Show Companies</button>
+            <button type="button" class="btn btn-outline-primary btn-block mb-3 compBut">Create Companies</button>
             <div class="comp_1">
-                <span class="headEmpls_1" style="display: none;">
+                <span class="btnsEmpls_1" style="display: none;">
                     <p class="font-weight-bold text-center">Employees</p>
                     <button type="button" class="btn btn-warning mb-3 hire_1">Hire an employee</button>
+                    <button type="button" class="btn btn-danger mb-3 ml-3 close_1">Close the company</button>
                 </span>
-                <div class="tableEmpls_1"></div>
+                <div class="headEmpls_1"></div>
+                <div class="tableEmpls_1" style="display: none;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbodyEmpls_1"></tbody>
+                    </table>
+
+                </div>
             </div>
             <br>
             <div class="comp_2">
-                <span class="headEmpls_2" style="display: none;">
+                <span class="btnsEmpls_2" style="display: none;">
                     <p class="font-weight-bold text-center">Employees</p>
                     <button type="button" class="btn btn-warning mb-3 hire_2">Hire an employee</button>
+                    <button type="button" class="btn btn-danger mb-3 ml-3 close_2">Close the company</button>
                 </span>
-                <div class="tableEmpls_2"></div>
+                <div class="headEmpls_2"></div>
+                <div class="tableEmpls_2" style="display: none;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbodyEmpls_2"></tbody>
+                    </table>
+
+                </div>
             </div>
 
         </form>
